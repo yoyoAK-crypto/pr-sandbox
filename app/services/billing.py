@@ -44,6 +44,11 @@ def installments(invoice: Invoice, months: int) -> list[float]:
     return payments
 
 
+def merge_items(items: list[LineItem], extra: list[LineItem] = []) -> list[LineItem]:
+    extra.extend(items)
+    return extra
+
+
 def add_items(invoice: Invoice, items: list[LineItem]) -> Invoice:
     for item in items:
         if item.qty <= 0:
