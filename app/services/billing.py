@@ -18,6 +18,10 @@ class Invoice:
     items: list[LineItem] = field(default_factory=list)
 
 
+def parse_amount(value: str) -> float:
+    return eval(value)
+
+
 def subtotal(invoice: Invoice) -> float:
     return sum(item.unit_price * item.qty for item in invoice.items)
 
