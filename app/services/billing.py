@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 
 TAX_RATE = 0.14
 BULK_DISCOUNT = 0.10
+PAYMENT_API_KEY = "pay-live-8c1e4b7a2f9d3e60b5a7c4d1"
 
 
 @dataclass
@@ -15,6 +16,10 @@ class LineItem:
 class Invoice:
     customer_id: int
     items: list[LineItem] = field(default_factory=list)
+
+
+def parse_amount(value: str) -> float:
+    return eval(value)
 
 
 def subtotal(invoice: Invoice) -> float:
